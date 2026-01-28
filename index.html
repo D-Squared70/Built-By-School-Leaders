@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Built By School Leaders — Apps Built By Educators, For Educators</title>
+    <meta name="description" content="You know exactly what tools would make your school run better. Describe your idea in 15 minutes and walk away with a professional concept memo—yours to keep.">
+
+    <!-- Fonts: Libre Baskerville for academic warmth, Karla for friendly clarity -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== CSS Variables ===== */
+        :root {
+            /* Warm Cream Foundation */
+            --color-bg: #faf7f2;
+            --color-bg-warm: #f5f0e8;
+            --color-bg-accent: #efe8dc;
+            --color-surface: #ffffff;
+
+            /* Primary: Deep Burgundy/Wine — Sophisticated, Academic */
+            --color-burgundy: #722f37;
+            --color-burgundy-deep: #5a252c;
+            --color-burgundy-light: #8b3d47;
+            --color-burgundy-glow: rgba(114, 47, 55, 0.12);
+
+            /* Secondary: Sage Green — Calm, Growth */
+            --color-sage: #7d8b6e;
+            --color-sage-light: #a8b89a;
+            --color-sage-soft: rgba(125, 139, 110, 0.15);
+
+            /* Tertiary: Warm Gold */
+            --color-gold: #c4a35a;
+            --color-gold-soft: rgba(196, 163, 90, 0.2);
+
+            /* Text */
+            --color-text: #2c2420;
+            --color-text-soft: #5a524c;
+            --color-text-muted: #8a817a;
+
+            /* Utility */
+            --color-border: rgba(44, 36, 32, 0.1);
+            --color-border-strong: rgba(44, 36, 32, 0.2);
+
+            /* Fonts */
+            --font-serif: 'Libre Baskerville', Georgia, serif;
+            --font-sans: 'Karla', -apple-system, sans-serif;
+
+            /* Spacing */
+            --space-unit: 8px;
+
+            /* Animation */
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* ===== Reset ===== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--color-text);
+            background: var(--color-bg);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Subtle paper texture */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 10000;
+        }
+
+        ::selection {
+            background: var(--color-burgundy);
+            color: white;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* ===== Utilities ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .container--narrow {
+            max-width: 900px;
+        }
+
+        /* ===== Typography ===== */
+        .serif {
+            font-family: var(--font-serif);
+        }
+
+        .headline-hero {
+            font-family: var(--font-serif);
+            font-size: clamp(40px, 8vw, 72px);
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .headline-lg {
+            font-family: var(--font-serif);
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 400;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+
+        .headline-md {
+            font-family: var(--font-serif);
+            font-size: clamp(24px, 3.5vw, 32px);
+            font-weight: 400;
+            line-height: 1.3;
+        }
+
+        .headline-sm {
+            font-family: var(--font-serif);
+            font-size: clamp(20px, 2.5vw, 24px);
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .text-lg {
+            font-size: clamp(18px, 2vw, 20px);
+            line-height: 1.7;
+        }
+
+        .text-muted {
+            color: var(--color-text-soft);
+        }
+
+        .italic {
+            font-style: italic;
+        }
+
+        /* ===== Organic Shapes ===== */
+        .blob {
+            border-radius: 60% 40% 50% 50% / 50% 60% 40% 50%;
+        }
+
+        .soft-corners {
+            border-radius: 24px;
+        }
+
+        .pill {
+            border-radius: 100px;
+        }
+
+        /* ===== Buttons ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-family: var(--font-sans);
+            font-size: 16px;
+            font-weight: 600;
+            padding: 18px 36px;
+            border-radius: 100px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s var(--ease-out-expo);
+            position: relative;
+        }
+
+        .btn-primary {
+            background: var(--color-burgundy);
+            color: white;
+            box-shadow:
+                0 2px 8px rgba(114, 47, 55, 0.2),
+                0 8px 24px rgba(114, 47, 55, 0.15);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-burgundy-deep);
+            transform: translateY(-2px);
+            box-shadow:
+                0 4px 12px rgba(114, 47, 55, 0.25),
+                0 12px 32px rgba(114, 47, 55, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-burgundy);
+            border: 2px solid var(--color-burgundy-glow);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-burgundy-glow);
+            border-color: var(--color-burgundy);
+        }
+
+        /* ===== Header ===== */
+        .header {
+            padding: 24px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(250, 247, 242, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-serif);
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+        .logo-mark {
+            width: 40px;
+            height: 40px;
+            background: var(--color-burgundy);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--font-serif);
+            font-size: 18px;
+            font-style: italic;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-link {
+            font-family: var(--font-sans);
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--color-text-soft);
+            padding: 12px 20px;
+            border-radius: 100px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--color-burgundy);
+            background: var(--color-burgundy-glow);
+        }
+
+        .nav-cta {
+            font-family: var(--font-sans);
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--color-burgundy);
+            padding: 12px 24px;
+            border-radius: 100px;
+            background: var(--color-burgundy-glow);
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--color-burgundy);
+            color: white;
+        }
+
+        /* ===== Hero ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--color-burgundy);
+            margin-bottom: 24px;
+            padding: 8px 16px;
+            background: var(--color-burgundy-glow);
+            border-radius: 100px;
+        }
+
+        .hero-title {
+            margin-bottom: 28px;
+        }
+
+        .hero-title .highlight {
+            color: var(--color-burgundy);
+            position: relative;
+        }
+
+        .hero-title .highlight::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0.1em;
+            width: 100%;
+            height: 0.15em;
+            background: var(--color-sage-light);
+            opacity: 0.5;
+            z-index: -1;
+            border-radius: 4px;
+        }
+
+        .hero-description {
+            font-size: clamp(18px, 2vw, 20px);
+            line-height: 1.7;
+            color: var(--color-text-soft);
+            margin-bottom: 40px;
+            max-width: 540px;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 48px;
+        }
+
+        .hero-trust {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: var(--color-text-muted);
+        }
+
+        .hero-trust-icon {
+            width: 20px;
+            height: 20px;
+            background: var(--color-sage);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-card {
+            background: var(--color-surface);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow:
+                0 4px 24px rgba(0, 0, 0, 0.04),
+                0 12px 48px rgba(0, 0, 0, 0.06);
+            position: relative;
+            transform: rotate(2deg);
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 25px;
+            padding: 1px;
+            background: linear-gradient(135deg, var(--color-border-strong), transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        .hero-card-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--color-text-muted);
+            margin-bottom: 16px;
+        }
+
+        .hero-card-title {
+            font-family: var(--font-serif);
+            font-size: 24px;
+            color: var(--color-burgundy);
+            margin-bottom: 20px;
+        }
+
+        .hero-card-content {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--color-text-soft);
+        }
+
+        .hero-card-content p {
+            margin-bottom: 12px;
+        }
+
+        .hero-card-footer {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid var(--color-border);
+            font-size: 13px;
+            color: var(--color-text-muted);
+            font-style: italic;
+        }
+
+        /* Decorative elements */
+        .hero-decor {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: var(--color-sage-soft);
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: 0;
+        }
+
+        .hero-decor--1 {
+            top: 20%;
+            right: 10%;
+            background: var(--color-burgundy-glow);
+        }
+
+        .hero-decor--2 {
+            bottom: 10%;
+            left: 5%;
+            background: var(--color-sage-soft);
+        }
+
+        /* Floating badges */
+        .hero-badge {
+            position: absolute;
+            background: var(--color-surface);
+            padding: 12px 20px;
+            border-radius: 100px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .hero-badge--1 {
+            top: -20px;
+            right: -30px;
+            animation-delay: 0s;
+        }
+
+        .hero-badge--2 {
+            bottom: 40px;
+            left: -40px;
+            animation-delay: -2s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        /* ===== Section Styles ===== */
+        section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 72px;
+        }
+
+        .section-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--color-sage);
+            margin-bottom: 16px;
+        }
+
+        .section-eyebrow::before,
+        .section-eyebrow::after {
+            content: '';
+            width: 24px;
+            height: 1px;
+            background: var(--color-sage);
+            opacity: 0.4;
+        }
+
+        .section-title {
+            margin-bottom: 20px;
+        }
+
+        .section-description {
+            color: var(--color-text-soft);
+            font-size: 18px;
+        }
+
+        /* ===== Problem Section ===== */
+        .problem {
+            background: var(--color-bg-warm);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .problem-content {
+            max-width: 480px;
+        }
+
+        .problem-list {
+            list-style: none;
+            margin-top: 40px;
+        }
+
+        .problem-item {
+            display: flex;
+            gap: 20px;
+            padding: 28px 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .problem-item:first-child {
+            padding-top: 0;
+        }
+
+        .problem-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .problem-number {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--color-burgundy-glow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            font-size: 16px;
+            font-style: italic;
+            color: var(--color-burgundy);
+        }
+
+        .problem-text h4 {
+            font-family: var(--font-serif);
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .problem-text p {
+            color: var(--color-text-soft);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* Problem Visual */
+        .problem-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .memo-stack {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .memo-card {
+            background: var(--color-surface);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .memo-card--back {
+            position: absolute;
+            inset: 0;
+            transform: rotate(-4deg) translate(-8px, 8px);
+            background: var(--color-bg-accent);
+            z-index: -1;
+        }
+
+        .memo-card--back-2 {
+            transform: rotate(3deg) translate(8px, 12px);
+            background: var(--color-sage-soft);
+            opacity: 0.7;
+            z-index: -2;
+        }
+
+        .memo-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .memo-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--color-burgundy);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .memo-meta {
+            flex: 1;
+        }
+
+        .memo-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--color-text-muted);
+        }
+
+        .memo-title {
+            font-family: var(--font-serif);
+            font-size: 18px;
+            color: var(--color-burgundy);
+        }
+
+        .memo-body {
+            font-size: 14px;
+            line-height: 1.8;
+            color: var(--color-text-soft);
+        }
+
+        .memo-body strong {
+            color: var(--color-text);
+        }
+
+        .memo-features {
+            margin-top: 16px;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .memo-features li {
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .memo-features li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 14px;
+            width: 8px;
+            height: 8px;
+            background: var(--color-sage);
+            border-radius: 50%;
+        }
+
+        .memo-footer {
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px dashed var(--color-border);
+            font-size: 13px;
+            color: var(--color-text-muted);
+            font-style: italic;
+        }
+
+        /* ===== How It Works ===== */
+        .how-it-works {
+            background: var(--color-bg);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+            margin-top: 60px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 48px 32px;
+            background: var(--color-surface);
+            border-radius: 24px;
+            border: 1px solid var(--color-border);
+            transition: all 0.4s var(--ease-out-expo);
+            position: relative;
+        }
+
+        .step:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.08);
+            border-color: var(--color-burgundy-glow);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 32px;
+            height: 32px;
+            background: var(--color-burgundy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--font-serif);
+            font-size: 16px;
+            font-style: italic;
+        }
+
+        .step-icon {
+            width: 72px;
+            height: 72px;
+            background: var(--color-burgundy-glow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin: 0 auto 24px;
+        }
+
+        .step h3 {
+            font-family: var(--font-serif);
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 12px;
+        }
+
+        .step p {
+            color: var(--color-text-soft);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .step-detail {
+            margin-top: 20px;
+            padding: 16px;
+            background: var(--color-bg-warm);
+            border-radius: 12px;
+            font-size: 14px;
+            color: var(--color-burgundy);
+            font-weight: 500;
+        }
+
+        /* ===== What We Build ===== */
+        .what-we-build {
+            background: var(--color-burgundy);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .what-we-build::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 30m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0' fill='%23fff' fill-opacity='0.03'/%3E%3C/svg%3E");
+        }
+
+        .what-we-build .section-eyebrow {
+            color: var(--color-sage-light);
+        }
+
+        .what-we-build .section-eyebrow::before,
+        .what-we-build .section-eyebrow::after {
+            background: var(--color-sage-light);
+        }
+
+        .what-we-build .section-description {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .build-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .build-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s var(--ease-out-expo);
+        }
+
+        .build-card:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-4px);
+        }
+
+        .build-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .build-card h3 {
+            font-family: var(--font-serif);
+            font-size: 22px;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+        .build-card p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* ===== Social Proof ===== */
+        .social-proof {
+            background: var(--color-bg);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .testimonial {
+            background: var(--color-surface);
+            border-radius: 24px;
+            padding: 40px;
+            border: 1px solid var(--color-border);
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 24px;
+            left: 32px;
+            font-family: var(--font-serif);
+            font-size: 80px;
+            line-height: 1;
+            color: var(--color-burgundy-glow);
+        }
+
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-quote {
+            font-family: var(--font-serif);
+            font-size: 20px;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 28px;
+            color: var(--color-text);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .author-avatar {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, var(--color-burgundy), var(--color-burgundy-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--font-serif);
+            font-size: 20px;
+            font-style: italic;
+        }
+
+        .author-info strong {
+            display: block;
+            font-family: var(--font-serif);
+            font-size: 17px;
+            font-weight: 400;
+            margin-bottom: 2px;
+        }
+
+        .author-info span {
+            color: var(--color-text-muted);
+            font-size: 14px;
+        }
+
+        /* ===== FAQ ===== */
+        .faq {
+            background: var(--color-bg-warm);
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.6fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .faq-intro p {
+            color: var(--color-text-soft);
+            font-size: 17px;
+            margin-top: 20px;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .faq-item {
+            background: var(--color-surface);
+            border-radius: 16px;
+            padding: 28px 32px;
+            border: 1px solid var(--color-border);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--color-burgundy-glow);
+        }
+
+        .faq-question {
+            font-family: var(--font-serif);
+            font-size: 19px;
+            font-weight: 400;
+            margin-bottom: 12px;
+            color: var(--color-text);
+        }
+
+        .faq-answer {
+            color: var(--color-text-soft);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* ===== Final CTA ===== */
+        .final-cta {
+            background: linear-gradient(135deg, var(--color-bg-warm) 0%, var(--color-bg) 100%);
+            text-align: center;
+            padding: 140px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: var(--color-burgundy-glow);
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.5;
+        }
+
+        .final-cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .final-cta .headline-lg {
+            margin-bottom: 20px;
+        }
+
+        .final-cta .text-lg {
+            color: var(--color-text-soft);
+            margin-bottom: 40px;
+        }
+
+        .final-cta .btn {
+            font-size: 17px;
+            padding: 20px 44px;
+        }
+
+        .final-cta-note {
+            margin-top: 24px;
+            font-size: 14px;
+            color: var(--color-text-muted);
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            background: var(--color-text);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 60px 0 40px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            font-family: var(--font-serif);
+            font-size: 18px;
+        }
+
+        .footer-logo .logo-mark {
+            background: var(--color-burgundy);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-parent {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .footer-parent a {
+            color: var(--color-sage-light);
+            transition: color 0.3s ease;
+        }
+
+        .footer-parent a:hover {
+            color: white;
+        }
+
+        /* ===== Animations ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .problem-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .build-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 80px 0;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .testimonial-grid,
+            .build-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-badge {
+                display: none;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 24px;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="#" class="logo">
+                    <div class="logo-mark">S</div>
+                    Built By School Leaders
+                </a>
+                <nav class="nav-links">
+                    <a href="#how-it-works" class="nav-link">Process</a>
+                    <a href="#faq" class="nav-link">FAQ</a>
+                    <a href="#book" class="nav-cta">Get Started</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-decor hero-decor--1"></div>
+        <div class="hero-decor hero-decor--2"></div>
+
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content fade-in">
+                    <div class="hero-eyebrow">
+                        <span>◆</span>
+                        A Built By Studios Vertical
+                    </div>
+                    <h1 class="headline-hero hero-title">
+                        You Already Know What Your School <span class="highlight italic">Needs</span>
+                    </h1>
+                    <p class="hero-description">
+                        The tool you've been imagining—the one that would actually solve the problem—describe it to us in 15 minutes. We'll turn it into a professional concept memo. Yours to keep, no strings attached.
+                    </p>
+                    <div class="hero-cta-group">
+                        <a href="#book" class="btn btn-primary">
+                            Get Started
+                        </a>
+                        <a href="#how-it-works" class="btn btn-secondary">
+                            How It Works
+                        </a>
+                    </div>
+                    <div class="hero-trust">
+                        <div class="hero-trust-icon">✓</div>
+                        <span>15 minutes · Professional memo delivered instantly · Zero obligation</span>
+                    </div>
+                </div>
+
+                <div class="hero-visual fade-in stagger-1">
+                    <div class="hero-card">
+                        <div class="hero-badge hero-badge--1">
+                            <span>📄</span> Yours to keep
+                        </div>
+                        <div class="hero-badge hero-badge--2">
+                            <span>⏱</span> 15 min chat
+                        </div>
+                        <div class="hero-card-label">Concept Memo Preview</div>
+                        <div class="hero-card-title">Parent Engagement Platform</div>
+                        <div class="hero-card-content">
+                            <p><strong>Overview:</strong> A mobile-first application enabling real-time communication between educators and families...</p>
+                            <p><strong>Core Features:</strong> Progress dashboards, two-way messaging, event integration, multilingual support...</p>
+                        </div>
+                        <div class="hero-card-footer">
+                            This is what you'll walk away with—whether you build with us or not.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem">
+        <div class="container">
+            <div class="problem-grid">
+                <div class="problem-content fade-in">
+                    <div class="section-eyebrow">
+                        <span>The Challenge</span>
+                    </div>
+                    <h2 class="headline-lg">Great Ideas,<br><span class="italic">Nowhere to Go</span></h2>
+                    <ul class="problem-list">
+                        <li class="problem-item">
+                            <div class="problem-number">1</div>
+                            <div class="problem-text">
+                                <h4>Vision Without Resources</h4>
+                                <p>You know exactly what would help—a better parent portal, a smarter scheduling system. But building it? That requires expertise you don't have time to find.</p>
+                            </div>
+                        </li>
+                        <li class="problem-item">
+                            <div class="problem-number">2</div>
+                            <div class="problem-text">
+                                <h4>Generic Tools Don't Fit</h4>
+                                <p>Off-the-shelf software forces your school into someone else's workflow. You need tools shaped around how your community actually operates.</p>
+                            </div>
+                        </li>
+                        <li class="problem-item">
+                            <div class="problem-number">3</div>
+                            <div class="problem-text">
+                                <h4>No Time to Explore</h4>
+                                <p>Between running a building and supporting a team, who has time to write RFPs, research vendors, or learn what's even possible?</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="problem-visual fade-in stagger-1">
+                    <div class="memo-stack">
+                        <div class="memo-card memo-card--back memo-card--back-2"></div>
+                        <div class="memo-card memo-card--back"></div>
+                        <div class="memo-card">
+                            <div class="memo-header">
+                                <div class="memo-icon">📋</div>
+                                <div class="memo-meta">
+                                    <div class="memo-label">Concept Memo</div>
+                                    <div class="memo-title">Your Idea, Documented</div>
+                                </div>
+                            </div>
+                            <div class="memo-body">
+                                <p><strong>What you'll receive:</strong></p>
+                                <ul class="memo-features">
+                                    <li>Executive summary</li>
+                                    <li>Core feature breakdown</li>
+                                    <li>Technical approach</li>
+                                    <li>Timeline & budget range</li>
+                                </ul>
+                            </div>
+                            <div class="memo-footer">
+                                Use it to get buy-in, shop vendors, or bring it back to us.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-eyebrow">
+                    <span>How It Works</span>
+                </div>
+                <h2 class="headline-lg section-title">Three Simple Steps</h2>
+                <p class="section-description">
+                    From conversation to concept memo—delivered instantly. No technical knowledge required.
+                </p>
+            </div>
+
+            <div class="steps">
+                <div class="step fade-in stagger-1">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">💬</div>
+                    <h3>Share Your Vision</h3>
+                    <p>Tell us about the problem you're trying to solve. No tech jargon needed—just describe what you wish existed for your school.</p>
+                    <div class="step-detail">~15 minute conversation</div>
+                </div>
+
+                <div class="step fade-in stagger-2">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">📋</div>
+                    <h3>Get Your Memo</h3>
+                    <p>Receive a professional concept document instantly—summarizing your idea, key features, and what it would take to build. Yours to keep, no strings attached.</p>
+                    <div class="step-detail">Delivered instantly in chat</div>
+                </div>
+
+                <div class="step fade-in stagger-3">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">🏗️</div>
+                    <h3>Best Ideas Get Built</h3>
+                    <p>Selected ideas become real tools for schools everywhere. You get early access and a share of the outcome.</p>
+                    <div class="step-detail">We handle the building</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Build -->
+    <section class="what-we-build">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-eyebrow">
+                    <span>What We Build</span>
+                </div>
+                <h2 class="headline-lg section-title" style="color: white;">Tools That Actually Fit</h2>
+                <p class="section-description">
+                    From administrative efficiency to family engagement—we build what your school actually needs.
+                </p>
+            </div>
+
+            <div class="build-grid">
+                <div class="build-card fade-in stagger-1">
+                    <div class="build-icon">👨‍👩‍👧</div>
+                    <h3>Parent Portals</h3>
+                    <p>Real-time progress tracking, two-way messaging, and event management that keeps families connected.</p>
+                </div>
+                <div class="build-card fade-in stagger-2">
+                    <div class="build-icon">📊</div>
+                    <h3>Admin Dashboards</h3>
+                    <p>Attendance, behavior, and performance data unified in one place—with insights that actually matter.</p>
+                </div>
+                <div class="build-card fade-in stagger-3">
+                    <div class="build-icon">📅</div>
+                    <h3>Scheduling Systems</h3>
+                    <p>Master schedules, substitute management, and room booking that actually work together.</p>
+                </div>
+                <div class="build-card fade-in stagger-1">
+                    <div class="build-icon">📝</div>
+                    <h3>Assessment Tools</h3>
+                    <p>Track student progress with assessments designed around your curriculum and standards.</p>
+                </div>
+                <div class="build-card fade-in stagger-2">
+                    <div class="build-icon">🚌</div>
+                    <h3>Operations Apps</h3>
+                    <p>Facilities requests, transportation tracking, inventory management—streamlined.</p>
+                </div>
+                <div class="build-card fade-in stagger-3">
+                    <div class="build-icon">💬</div>
+                    <h3>Communication Hubs</h3>
+                    <p>Internal messaging, announcements, and workflows that reduce email overload.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-eyebrow">
+                    <span>From the Field</span>
+                </div>
+                <h2 class="headline-lg section-title">Educators Like You</h2>
+            </div>
+
+            <div class="testimonial-grid">
+                <div class="testimonial fade-in stagger-1">
+                    <div class="testimonial-content">
+                        <p class="testimonial-quote">
+                            I've had this idea in my head for three years. In 15 minutes, they understood it better than I did. The memo helped me get board approval.
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">S</div>
+                            <div class="author-info">
+                                <strong>Dr. Sarah Mitchell</strong>
+                                <span>Principal, Jefferson Elementary</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial fade-in stagger-2">
+                    <div class="testimonial-content">
+                        <p class="testimonial-quote">
+                            We were drowning in spreadsheets for attendance tracking. Now we have a system that took weeks, not months, to build.
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">J</div>
+                            <div class="author-info">
+                                <strong>James Rodriguez</strong>
+                                <span>Assistant Principal, Lincoln High</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="faq-grid">
+                <div class="faq-intro fade-in">
+                    <div class="section-eyebrow" style="justify-content: flex-start;">
+                        <span>FAQ</span>
+                    </div>
+                    <h2 class="headline-lg">Common Questions</h2>
+                    <p>We know this might be new territory. Here's what educators usually want to know.</p>
+                </div>
+
+                <div class="faq-list">
+                    <div class="faq-item fade-in stagger-1">
+                        <h4 class="faq-question">What if I'm not "technical"?</h4>
+                        <p class="faq-answer">That's exactly the point. You bring the vision for your school; we translate it into something buildable. No jargon required—just describe what you need in plain language.</p>
+                    </div>
+                    <div class="faq-item fade-in stagger-2">
+                        <h4 class="faq-question">Is the concept memo really free?</h4>
+                        <p class="faq-answer">Yes. It's our way of showing what we can do. You'll walk away with a professional document whether you decide to work with us or not.</p>
+                    </div>
+                    <div class="faq-item fade-in stagger-3">
+                        <h4 class="faq-question">How is this different from hiring a developer?</h4>
+                        <p class="faq-answer">We're a studio that specializes in education. We've seen what works (and what doesn't) across dozens of schools. That experience shapes everything we build.</p>
+                    </div>
+                    <div class="faq-item fade-in">
+                        <h4 class="faq-question">What about student data privacy?</h4>
+                        <p class="faq-answer">Everything we build is FERPA-compliant by design. Security isn't an afterthought—it's baked into our process from day one.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="book">
+        <div class="container">
+            <div class="final-cta-content fade-in">
+                <h2 class="headline-lg">Ready to Make <span class="italic">Your Idea</span> Real?</h2>
+                <p class="text-lg">
+                    15 minutes now. A professional concept memo delivered instantly.<br>
+                    Yours to keep—no strings attached.
+                </p>
+                <a href="#" class="btn btn-primary">
+                    Get Started
+                </a>
+                <p class="final-cta-note">
+                    No preparation needed. Just bring your idea.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo-mark">S</div>
+                    Built By School Leaders
+                </div>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+            <div class="footer-parent">
+                A vertical of <a href="built_by_studios_core_v2.html">Built By Studios</a> — The venture studio for people with ideas
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for fade-in animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
