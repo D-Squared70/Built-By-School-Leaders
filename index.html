@@ -3,57 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Built By School Leaders — Apps Built By Educators, For Educators</title>
-    <meta name="description" content="You know exactly what tools would make your school run better. Describe your idea in 15 minutes and walk away with a professional concept memo—yours to keep.">
+    <title>Built By School Leaders — Shaped by Real School Problems</title>
+    <meta name="description" content="Built By School Leaders helps creative thinkers turn lived experience into practical digital solutions for themselves and their peers — transforming ideas into reality and passive income.">
 
-    <!-- Fonts: Libre Baskerville for academic warmth, Karla for friendly clarity -->
+    <!-- Fonts: Comfortaa for rounded headlines, Reddit Sans for clean body copy -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Reddit+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
     <style>
         /* ===== CSS Variables ===== */
         :root {
-            /* Warm Cream Foundation */
-            --color-bg: #faf7f2;
-            --color-bg-warm: #f5f0e8;
-            --color-bg-accent: #efe8dc;
-            --color-surface: #ffffff;
+            --color-bg: #020624;
+            --color-bg-elevated: #0a0e35;
+            --color-bg-card: #10153f;
+            --color-cream: #f0ece4;
+            --color-cream-muted: rgba(240, 236, 228, 0.65);
+            --color-cream-faint: rgba(240, 236, 228, 0.1);
+            --color-accent: #BF4124;
+            --color-accent-glow: rgba(191, 65, 36, 0.35);
+            --color-accent-soft: rgba(191, 65, 36, 0.12);
+            --color-navy: #010440;
+            --color-navy-light: #1a1f5e;
+            --color-success: #4ade80;
 
-            /* Primary: Deep Burgundy/Wine — Sophisticated, Academic */
-            --color-burgundy: #722f37;
-            --color-burgundy-deep: #5a252c;
-            --color-burgundy-light: #8b3d47;
-            --color-burgundy-glow: rgba(114, 47, 55, 0.12);
+            --font-display: 'Comfortaa', cursive;
+            --font-body: 'Reddit Sans', sans-serif;
 
-            /* Secondary: Sage Green — Calm, Growth */
-            --color-sage: #7d8b6e;
-            --color-sage-light: #a8b89a;
-            --color-sage-soft: rgba(125, 139, 110, 0.15);
-
-            /* Tertiary: Warm Gold */
-            --color-gold: #c4a35a;
-            --color-gold-soft: rgba(196, 163, 90, 0.2);
-
-            /* Text */
-            --color-text: #2c2420;
-            --color-text-soft: #5a524c;
-            --color-text-muted: #8a817a;
-
-            /* Utility */
-            --color-border: rgba(44, 36, 32, 0.1);
-            --color-border-strong: rgba(44, 36, 32, 0.2);
-
-            /* Fonts */
-            --font-serif: 'Libre Baskerville', Georgia, serif;
-            --font-sans: 'Karla', -apple-system, sans-serif;
-
-            /* Spacing */
-            --space-unit: 8px;
-
-            /* Animation */
             --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-            --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         /* ===== Reset ===== */
@@ -68,29 +46,32 @@
         }
 
         body {
-            font-family: var(--font-sans);
+            font-family: var(--font-body);
             font-size: 17px;
             line-height: 1.7;
-            color: var(--color-text);
+            color: var(--color-cream);
             background: var(--color-bg);
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
 
-        /* Subtle paper texture */
+        /* Grain overlay */
         body::before {
             content: '';
             position: fixed;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
             opacity: 0.03;
             pointer-events: none;
             z-index: 10000;
         }
 
         ::selection {
-            background: var(--color-burgundy);
-            color: white;
+            background: var(--color-accent);
+            color: var(--color-bg);
         }
 
         a {
@@ -105,74 +86,51 @@
 
         /* ===== Utilities ===== */
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 32px;
-        }
-
-        .container--narrow {
-            max-width: 900px;
+            padding: 0 clamp(24px, 5vw, 80px);
         }
 
         /* ===== Typography ===== */
-        .serif {
-            font-family: var(--font-serif);
-        }
-
-        .headline-hero {
-            font-family: var(--font-serif);
-            font-size: clamp(40px, 8vw, 72px);
-            font-weight: 400;
+        .headline-xl {
+            font-family: var(--font-display);
+            font-size: clamp(36px, 6.5vw, 80px);
+            font-weight: 700;
             line-height: 1.1;
             letter-spacing: -0.02em;
         }
 
         .headline-lg {
-            font-family: var(--font-serif);
-            font-size: clamp(32px, 5vw, 48px);
-            font-weight: 400;
-            line-height: 1.2;
+            font-family: var(--font-display);
+            font-size: clamp(32px, 5vw, 64px);
+            font-weight: 700;
+            line-height: 1.1;
             letter-spacing: -0.01em;
         }
 
         .headline-md {
-            font-family: var(--font-serif);
-            font-size: clamp(24px, 3.5vw, 32px);
-            font-weight: 400;
-            line-height: 1.3;
-        }
-
-        .headline-sm {
-            font-family: var(--font-serif);
-            font-size: clamp(20px, 2.5vw, 24px);
-            font-weight: 400;
-            line-height: 1.4;
+            font-family: var(--font-display);
+            font-size: clamp(24px, 3.5vw, 40px);
+            font-weight: 700;
+            line-height: 1.2;
         }
 
         .text-lg {
-            font-size: clamp(18px, 2vw, 20px);
-            line-height: 1.7;
+            font-size: clamp(18px, 2vw, 22px);
+            line-height: 1.6;
         }
 
         .text-muted {
-            color: var(--color-text-soft);
+            color: var(--color-cream-muted);
+        }
+
+        .text-accent {
+            color: var(--color-accent);
         }
 
         .italic {
+            color: var(--color-accent);
             font-style: italic;
-        }
-
-        /* ===== Organic Shapes ===== */
-        .blob {
-            border-radius: 60% 40% 50% 50% / 50% 60% 40% 50%;
-        }
-
-        .soft-corners {
-            border-radius: 24px;
-        }
-
-        .pill {
-            border-radius: 100px;
         }
 
         /* ===== Buttons ===== */
@@ -180,59 +138,83 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            font-family: var(--font-sans);
-            font-size: 16px;
+            gap: 12px;
+            font-family: var(--font-body);
+            font-size: 15px;
             font-weight: 600;
-            padding: 18px 36px;
-            border-radius: 100px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            padding: 20px 40px;
             border: none;
+            border-radius: 6px;
             cursor: pointer;
-            transition: all 0.4s var(--ease-out-expo);
+            transition: all 0.5s var(--ease-out-expo);
             position: relative;
+            overflow: hidden;
         }
 
         .btn-primary {
-            background: var(--color-burgundy);
-            color: white;
-            box-shadow:
-                0 2px 8px rgba(114, 47, 55, 0.2),
-                0 8px 24px rgba(114, 47, 55, 0.15);
+            background: var(--color-accent);
+            color: var(--color-bg);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s var(--ease-out-expo);
         }
 
         .btn-primary:hover {
-            background: var(--color-burgundy-deep);
             transform: translateY(-2px);
-            box-shadow:
-                0 4px 12px rgba(114, 47, 55, 0.25),
-                0 12px 32px rgba(114, 47, 55, 0.2);
+            box-shadow: 0 20px 40px var(--color-accent-glow);
         }
 
-        .btn-secondary {
+        .btn-primary:hover::before {
+            transform: translateX(100%);
+        }
+
+        .btn-outline {
             background: transparent;
-            color: var(--color-burgundy);
-            border: 2px solid var(--color-burgundy-glow);
+            color: var(--color-cream);
+            border: 1px solid var(--color-cream-faint);
         }
 
-        .btn-secondary:hover {
-            background: var(--color-burgundy-glow);
-            border-color: var(--color-burgundy);
+        .btn-outline:hover {
+            border-color: var(--color-cream);
+            background: var(--color-cream);
+            color: var(--color-bg);
         }
 
-        /* ===== Header ===== */
-        .header {
-            padding: 24px 0;
+        .btn .arrow {
+            transition: transform 0.3s var(--ease-out-expo);
+            display: inline-block;
+        }
+
+        .btn:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        /* ===== Navigation ===== */
+        .nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(250, 247, 242, 0.9);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--color-border);
+            padding: 32px 0;
+            transition: all 0.5s var(--ease-out-expo);
         }
 
-        .header-inner {
+        .nav.scrolled {
+            padding: 20px 0;
+            background: rgba(2, 6, 36, 0.92);
+            backdrop-filter: blur(20px);
+        }
+
+        .nav-content {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -241,790 +223,843 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-family: var(--font-serif);
-            font-size: 20px;
-            font-weight: 400;
+            gap: 0;
         }
 
-        .logo-mark {
-            width: 40px;
-            height: 40px;
-            background: var(--color-burgundy);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-family: var(--font-serif);
-            font-size: 18px;
-            font-style: italic;
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .logo-footer img {
+            height: 48px;
+            width: auto;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 48px;
+            list-style: none;
         }
 
-        .nav-link {
-            font-family: var(--font-sans);
-            font-size: 15px;
+        .nav-links a {
+            font-size: 14px;
             font-weight: 500;
-            color: var(--color-text-soft);
-            padding: 12px 20px;
-            border-radius: 100px;
-            transition: all 0.3s ease;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--color-cream-muted);
+            transition: color 0.3s ease;
         }
 
-        .nav-link:hover {
-            color: var(--color-burgundy);
-            background: var(--color-burgundy-glow);
+        .nav-links a:hover {
+            color: var(--color-cream);
         }
 
         .nav-cta {
-            font-family: var(--font-sans);
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--color-burgundy);
-            padding: 12px 24px;
-            border-radius: 100px;
-            background: var(--color-burgundy-glow);
-            transition: all 0.3s ease;
+            padding: 14px 28px;
+            font-size: 13px;
         }
 
         .nav-cta:hover {
-            background: var(--color-burgundy);
-            color: white;
+            color: var(--color-bg) !important;
         }
 
         /* ===== Hero ===== */
         .hero {
             min-height: 100vh;
             display: flex;
-            align-items: center;
-            padding: 140px 0 100px;
+            flex-direction: column;
+            justify-content: center;
+            padding: 160px 0 100px;
             position: relative;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
             overflow: hidden;
         }
 
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, var(--color-accent-glow) 0%, rgba(1, 4, 64, 0.3) 40%, transparent 65%);
+            opacity: 0.2;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
         .hero-grid {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 80px;
-            align-items: center;
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(var(--color-cream-faint) 1px, transparent 1px),
+                linear-gradient(90deg, var(--color-cream-faint) 1px, transparent 1px);
+            background-size: 100px 100px;
+            opacity: 0.3;
+            mask-image: radial-gradient(ellipse at bottom right, black 0%, transparent 70%);
         }
 
         .hero-content {
             position: relative;
-            z-index: 2;
+            z-index: 1;
         }
 
         .hero-eyebrow {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: var(--color-burgundy);
-            margin-bottom: 24px;
-            padding: 8px 16px;
-            background: var(--color-burgundy-glow);
-            border-radius: 100px;
+            gap: 16px;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 1s var(--ease-out-expo) 0.2s forwards;
         }
 
-        .hero-title {
-            margin-bottom: 28px;
-        }
-
-        .hero-title .highlight {
-            color: var(--color-burgundy);
-            position: relative;
-        }
-
-        .hero-title .highlight::after {
+        .hero-eyebrow::before {
             content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0.1em;
-            width: 100%;
-            height: 0.15em;
-            background: var(--color-sage-light);
-            opacity: 0.5;
-            z-index: -1;
-            border-radius: 4px;
+            width: 60px;
+            height: 1px;
+            background: var(--color-accent);
+        }
+
+        .hero-eyebrow span {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+        }
+
+        .hero-headline {
+            max-width: 1100px;
+            margin-bottom: 48px;
+            opacity: 0;
+            animation: fadeInUp 1s var(--ease-out-expo) 0.4s forwards;
+        }
+
+        .hero-sub {
+            opacity: 0;
+            animation: fadeInUp 1s var(--ease-out-expo) 0.6s forwards;
         }
 
         .hero-description {
-            font-size: clamp(18px, 2vw, 20px);
-            line-height: 1.7;
-            color: var(--color-text-soft);
-            margin-bottom: 40px;
-            max-width: 540px;
+            max-width: 620px;
         }
 
-        .hero-cta-group {
+        .hero-description p {
+            margin-bottom: 20px;
+            color: var(--color-cream-muted);
+        }
+
+        .role-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 40px;
+        }
+
+        .role-chip {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--color-cream-muted);
+            padding: 6px 16px;
+            background: var(--color-cream-faint);
+            border: 1px solid rgba(240, 236, 228, 0.08);
+            border-radius: 100px;
+            transition: all 0.3s ease;
+        }
+
+        .role-chip:hover {
+            border-color: var(--color-accent);
+            color: var(--color-cream);
+        }
+
+        .hero-ctas {
             display: flex;
             flex-wrap: wrap;
             gap: 16px;
-            align-items: center;
-            margin-bottom: 48px;
+            margin-bottom: 32px;
         }
 
         .hero-trust {
+            font-size: 14px;
+            color: var(--color-cream-muted);
+            line-height: 1.6;
+            max-width: 500px;
+            border-top: 1px solid var(--color-cream-faint);
+            padding-top: 24px;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
+            flex-direction: column;
             align-items: center;
             gap: 12px;
-            font-size: 14px;
-            color: var(--color-text-muted);
+            opacity: 0;
+            animation: fadeIn 1s var(--ease-out-expo) 1s forwards;
         }
 
-        .hero-trust-icon {
-            width: 20px;
-            height: 20px;
-            background: var(--color-sage);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 12px;
-        }
-
-        /* Hero Visual */
-        .hero-visual {
-            position: relative;
-        }
-
-        .hero-card {
-            background: var(--color-surface);
-            border-radius: 24px;
-            padding: 40px;
-            box-shadow:
-                0 4px 24px rgba(0, 0, 0, 0.04),
-                0 12px 48px rgba(0, 0, 0, 0.06);
-            position: relative;
-            transform: rotate(2deg);
-        }
-
-        .hero-card::before {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            border-radius: 25px;
-            padding: 1px;
-            background: linear-gradient(135deg, var(--color-border-strong), transparent);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-        }
-
-        .hero-card-label {
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.08em;
+        .hero-scroll span {
+            font-size: 11px;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--color-text-muted);
-            margin-bottom: 16px;
+            color: var(--color-cream-muted);
         }
 
-        .hero-card-title {
-            font-family: var(--font-serif);
-            font-size: 24px;
-            color: var(--color-burgundy);
-            margin-bottom: 20px;
+        .scroll-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--color-cream-muted), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
         }
 
-        .hero-card-content {
-            font-size: 15px;
-            line-height: 1.8;
-            color: var(--color-text-soft);
-        }
-
-        .hero-card-content p {
-            margin-bottom: 12px;
-        }
-
-        .hero-card-footer {
-            margin-top: 24px;
-            padding-top: 20px;
-            border-top: 1px solid var(--color-border);
-            font-size: 13px;
-            color: var(--color-text-muted);
-            font-style: italic;
-        }
-
-        /* Decorative elements */
-        .hero-decor {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: var(--color-sage-soft);
-            border-radius: 50%;
-            filter: blur(60px);
-            z-index: 0;
-        }
-
-        .hero-decor--1 {
-            top: 20%;
-            right: 10%;
-            background: var(--color-burgundy-glow);
-        }
-
-        .hero-decor--2 {
-            bottom: 10%;
-            left: 5%;
-            background: var(--color-sage-soft);
-        }
-
-        /* Floating badges */
-        .hero-badge {
-            position: absolute;
-            background: var(--color-surface);
-            padding: 12px 20px;
-            border-radius: 100px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            font-size: 14px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            animation: float 5s ease-in-out infinite;
-        }
-
-        .hero-badge--1 {
-            top: -20px;
-            right: -30px;
-            animation-delay: 0s;
-        }
-
-        .hero-badge--2 {
-            bottom: 40px;
-            left: -40px;
-            animation-delay: -2s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
-        }
-
-        /* ===== Section Styles ===== */
-        section {
-            padding: 120px 0;
+        /* ===== Possibility Section ===== */
+        .possibility {
+            padding: 200px 0;
             position: relative;
         }
 
-        .section-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 72px;
-        }
-
-        .section-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--color-sage);
-            margin-bottom: 16px;
-        }
-
-        .section-eyebrow::before,
-        .section-eyebrow::after {
-            content: '';
-            width: 24px;
-            height: 1px;
-            background: var(--color-sage);
-            opacity: 0.4;
-        }
-
-        .section-title {
-            margin-bottom: 20px;
-        }
-
-        .section-description {
-            color: var(--color-text-soft);
-            font-size: 18px;
-        }
-
-        /* ===== Problem Section ===== */
-        .problem {
-            background: var(--color-bg-warm);
-        }
-
-        .problem-grid {
+        .possibility-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 100px;
-            align-items: center;
+            gap: 120px;
+            align-items: start;
         }
 
-        .problem-content {
-            max-width: 480px;
+        .possibility-content h2 {
+            position: sticky;
+            top: 150px;
         }
 
-        .problem-list {
+        .possibility-body {
+            color: var(--color-cream-muted);
+            font-size: clamp(17px, 1.8vw, 20px);
+            line-height: 1.8;
+        }
+
+        .possibility-body p {
+            margin-bottom: 32px;
+        }
+
+        .possibility-bullets {
             list-style: none;
-            margin-top: 40px;
         }
 
-        .problem-item {
-            display: flex;
-            gap: 20px;
-            padding: 28px 0;
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .problem-item:first-child {
-            padding-top: 0;
-        }
-
-        .problem-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .problem-number {
-            flex-shrink: 0;
-            width: 36px;
-            height: 36px;
-            background: var(--color-burgundy-glow);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-serif);
+        .possibility-bullets li {
+            padding: 16px 0;
+            padding-left: 28px;
+            position: relative;
+            color: var(--color-cream);
             font-size: 16px;
-            font-style: italic;
-            color: var(--color-burgundy);
+            line-height: 1.6;
+            border-bottom: 1px solid var(--color-cream-faint);
         }
 
-        .problem-text h4 {
-            font-family: var(--font-serif);
-            font-size: 20px;
-            font-weight: 400;
-            margin-bottom: 8px;
+        .possibility-bullets li:last-child {
+            border-bottom: none;
         }
 
-        .problem-text p {
-            color: var(--color-text-soft);
-            font-size: 15px;
-            line-height: 1.7;
-        }
-
-        /* Problem Visual */
-        .problem-visual {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .memo-stack {
-            position: relative;
-            width: 100%;
-            max-width: 400px;
-        }
-
-        .memo-card {
-            background: var(--color-surface);
-            border-radius: 16px;
-            padding: 32px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-            position: relative;
-        }
-
-        .memo-card--back {
+        .possibility-bullets li::before {
+            content: '';
             position: absolute;
-            inset: 0;
-            transform: rotate(-4deg) translate(-8px, 8px);
-            background: var(--color-bg-accent);
-            z-index: -1;
+            left: 0;
+            top: 24px;
+            width: 8px;
+            height: 8px;
+            background: var(--color-accent);
+            border-radius: 50%;
         }
 
-        .memo-card--back-2 {
-            transform: rotate(3deg) translate(8px, 12px);
-            background: var(--color-sage-soft);
-            opacity: 0.7;
-            z-index: -2;
+        /* ===== What We Believe ===== */
+        .believe {
+            padding: 200px 0;
+            background: var(--color-bg-elevated);
+            position: relative;
         }
 
-        .memo-header {
+        .believe-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 120px;
+            align-items: start;
+        }
+
+        .believe-content h2 {
+            position: sticky;
+            top: 150px;
+        }
+
+        .believe-text {
+            color: var(--color-cream-muted);
+            font-size: clamp(18px, 2vw, 21px);
+            line-height: 1.8;
+        }
+
+        /* ===== Who We Are ===== */
+        .who-we-are {
+            padding: 200px 0;
+            position: relative;
+        }
+
+        .who-we-are-content {
+            max-width: 900px;
+        }
+
+        .who-we-are-content h2 {
+            margin-bottom: 32px;
+        }
+
+        .who-we-are-body {
+            font-size: clamp(18px, 2vw, 21px);
+            line-height: 1.8;
+            color: var(--color-cream-muted);
+            margin-bottom: 64px;
+        }
+
+        .trust-signals {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            background: var(--color-cream-faint);
+        }
+
+        .trust-signal {
+            background: var(--color-bg);
+            padding: 40px;
             display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--color-border);
+            align-items: flex-start;
+            gap: 20px;
+            transition: all 0.5s var(--ease-out-expo);
         }
 
-        .memo-icon {
+        .trust-signal:hover {
+            background: var(--color-bg-elevated);
+        }
+
+        .trust-signal-icon {
             width: 44px;
             height: 44px;
-            background: var(--color-burgundy);
+            background: var(--color-accent-soft);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 20px;
+            flex-shrink: 0;
+            color: var(--color-accent);
         }
 
-        .memo-meta {
-            flex: 1;
+        .trust-signal p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-cream);
         }
 
-        .memo-label {
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: var(--color-text-muted);
-        }
-
-        .memo-title {
-            font-family: var(--font-serif);
-            font-size: 18px;
-            color: var(--color-burgundy);
-        }
-
-        .memo-body {
-            font-size: 14px;
-            line-height: 1.8;
-            color: var(--color-text-soft);
-        }
-
-        .memo-body strong {
-            color: var(--color-text);
-        }
-
-        .memo-features {
-            margin-top: 16px;
-            padding-left: 0;
-            list-style: none;
-        }
-
-        .memo-features li {
-            padding: 6px 0;
-            padding-left: 20px;
+        /* ===== What We Do ===== */
+        .what-we-do {
+            padding: 200px 0;
+            background: var(--color-bg-elevated);
             position: relative;
         }
 
-        .memo-features li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 14px;
-            width: 8px;
-            height: 8px;
-            background: var(--color-sage);
-            border-radius: 50%;
+        .what-we-do-header {
+            margin-bottom: 100px;
         }
 
-        .memo-footer {
-            margin-top: 20px;
-            padding-top: 16px;
-            border-top: 1px dashed var(--color-border);
+        .what-we-do-header p {
+            color: var(--color-cream-muted);
+            margin-top: 24px;
+            max-width: 600px;
+            font-size: clamp(18px, 2vw, 21px);
+        }
+
+        .do-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2px;
+            background: var(--color-cream-faint);
+        }
+
+        .do-card {
+            background: var(--color-bg-elevated);
+            padding: 60px;
+            position: relative;
+            transition: all 0.5s var(--ease-out-expo);
+        }
+
+        .do-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--color-accent);
+            transition: height 0.5s var(--ease-out-expo);
+        }
+
+        .do-card:hover {
+            background: var(--color-bg);
+        }
+
+        .do-card:hover::before {
+            height: 100%;
+        }
+
+        .do-card-number {
+            font-family: var(--font-display);
             font-size: 13px;
-            color: var(--color-text-muted);
+            font-weight: 700;
+            color: var(--color-accent);
+            margin-bottom: 16px;
+            display: block;
+            letter-spacing: 0.05em;
+        }
+
+        .do-card h3 {
+            font-family: var(--font-display);
+            font-size: clamp(20px, 2.5vw, 26px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--color-cream);
+        }
+
+        .do-card p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--color-cream-muted);
+        }
+
+        /* ===== Built For Section ===== */
+        .built-for {
+            padding: 200px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .built-for-header {
+            max-width: 700px;
+            margin-bottom: 80px;
+        }
+
+        .built-for-header h2 {
+            margin-bottom: 24px;
+        }
+
+        .built-for-header p {
+            color: var(--color-cream-muted);
+            font-size: clamp(18px, 2vw, 21px);
+        }
+
+        .cluster-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            background: var(--color-cream-faint);
+        }
+
+        .cluster-card {
+            background: var(--color-bg);
+            padding: 48px 40px;
+            transition: all 0.5s var(--ease-out-expo);
+            position: relative;
+        }
+
+        .cluster-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 40px;
+            right: 40px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--color-accent-glow), transparent);
+            opacity: 0;
+            transition: opacity 0.5s var(--ease-out-expo);
+        }
+
+        .cluster-card:hover {
+            background: var(--color-bg-elevated);
+        }
+
+        .cluster-card:hover::after {
+            opacity: 1;
+        }
+
+        .cluster-card h3 {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--color-cream);
+        }
+
+        .cluster-card p {
+            color: var(--color-cream-muted);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .cluster-bridge {
+            margin-top: 64px;
+            text-align: center;
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-cream-muted);
+            font-style: italic;
+        }
+
+        /* ===== Why Different ===== */
+        .different {
+            padding: 200px 0;
+            background: var(--color-bg-elevated);
+            position: relative;
+        }
+
+        .different-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 120px;
+            align-items: start;
+        }
+
+        .different-content h2 {
+            position: sticky;
+            top: 150px;
+        }
+
+        .different-list {
+            list-style: none;
+        }
+
+        .different-list li {
+            padding: 32px 0;
+            border-bottom: 1px solid var(--color-cream-faint);
+            font-size: clamp(17px, 1.8vw, 20px);
+            line-height: 1.5;
+            color: var(--color-cream);
+        }
+
+        .different-list li:first-child {
+            padding-top: 0;
+        }
+
+        .different-list li strong {
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        .different-closer {
+            padding-top: 40px;
+            color: var(--color-cream-muted);
+            font-size: clamp(17px, 1.8vw, 20px);
+            line-height: 1.6;
             font-style: italic;
         }
 
         /* ===== How It Works ===== */
         .how-it-works {
-            background: var(--color-bg);
+            padding: 200px 0;
+            position: relative;
+        }
+
+        .how-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 120px;
+            align-items: end;
+        }
+
+        .how-header p {
+            color: var(--color-cream-muted);
+            max-width: 480px;
         }
 
         .steps {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 48px;
-            margin-top: 60px;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0;
+            position: relative;
+        }
+
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 80px;
+            left: 5%;
+            right: 5%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--color-cream-faint), var(--color-cream-faint), transparent);
         }
 
         .step {
+            padding: 0 24px;
             text-align: center;
-            padding: 48px 32px;
-            background: var(--color-surface);
-            border-radius: 24px;
-            border: 1px solid var(--color-border);
-            transition: all 0.4s var(--ease-out-expo);
             position: relative;
-        }
-
-        .step:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.08);
-            border-color: var(--color-burgundy-glow);
-        }
-
-        .step-number {
-            position: absolute;
-            top: -16px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 32px;
-            height: 32px;
-            background: var(--color-burgundy);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-family: var(--font-serif);
-            font-size: 16px;
-            font-style: italic;
         }
 
         .step-icon {
-            width: 72px;
-            height: 72px;
-            background: var(--color-burgundy-glow);
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 40px;
+            background: var(--color-bg-elevated);
+            border: 1px solid var(--color-cream-faint);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
-            margin: 0 auto 24px;
+            position: relative;
+            transition: all 0.5s var(--ease-out-expo);
+        }
+
+        .step:hover .step-icon {
+            border-color: var(--color-accent);
+            box-shadow: 0 0 60px var(--color-accent-glow);
+        }
+
+        .step-icon span {
+            font-family: var(--font-display);
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 1;
+            color: var(--color-cream);
+        }
+
+        .step-icon--highlight {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+        }
+
+        .step-icon--highlight span {
+            color: var(--color-bg);
         }
 
         .step h3 {
-            font-family: var(--font-serif);
-            font-size: 24px;
-            font-weight: 400;
-            margin-bottom: 12px;
+            font-family: var(--font-body);
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
         }
 
         .step p {
-            color: var(--color-text-soft);
-            font-size: 15px;
-            line-height: 1.7;
-        }
-
-        .step-detail {
-            margin-top: 20px;
-            padding: 16px;
-            background: var(--color-bg-warm);
-            border-radius: 12px;
             font-size: 14px;
-            color: var(--color-burgundy);
-            font-weight: 500;
-        }
-
-        /* ===== What We Build ===== */
-        .what-we-build {
-            background: var(--color-burgundy);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .what-we-build::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 30m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0' fill='%23fff' fill-opacity='0.03'/%3E%3C/svg%3E");
-        }
-
-        .what-we-build .section-eyebrow {
-            color: var(--color-sage-light);
-        }
-
-        .what-we-build .section-eyebrow::before,
-        .what-we-build .section-eyebrow::after {
-            background: var(--color-sage-light);
-        }
-
-        .what-we-build .section-description {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .build-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .build-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 32px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s var(--ease-out-expo);
-        }
-
-        .build-card:hover {
-            background: rgba(255, 255, 255, 0.12);
-            transform: translateY(-4px);
-        }
-
-        .build-icon {
-            width: 56px;
-            height: 56px;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-
-        .build-card h3 {
-            font-family: var(--font-serif);
-            font-size: 22px;
-            font-weight: 400;
-            margin-bottom: 10px;
-        }
-
-        .build-card p {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 15px;
-            line-height: 1.7;
-        }
-
-        /* ===== Social Proof ===== */
-        .social-proof {
-            background: var(--color-bg);
-        }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 32px;
-        }
-
-        .testimonial {
-            background: var(--color-surface);
-            border-radius: 24px;
-            padding: 40px;
-            border: 1px solid var(--color-border);
-            position: relative;
-        }
-
-        .testimonial::before {
-            content: '"';
-            position: absolute;
-            top: 24px;
-            left: 32px;
-            font-family: var(--font-serif);
-            font-size: 80px;
-            line-height: 1;
-            color: var(--color-burgundy-glow);
-        }
-
-        .testimonial-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .testimonial-quote {
-            font-family: var(--font-serif);
-            font-size: 20px;
-            font-style: italic;
+            color: var(--color-cream-muted);
             line-height: 1.6;
-            margin-bottom: 28px;
-            color: var(--color-text);
         }
 
-        .testimonial-author {
+        /* ===== Submit an Idea ===== */
+        .submit-idea {
+            padding: 200px 0;
+            background: var(--color-bg-elevated);
+            text-align: center;
+        }
+
+        .submit-idea-content {
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        .submit-idea h2 {
+            margin-bottom: 40px;
+        }
+
+        .submit-details {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 48px;
+        }
+
+        .submit-details li {
+            padding: 16px 0;
+            padding-left: 32px;
+            position: relative;
+            color: var(--color-cream-muted);
+            font-size: 17px;
+            border-bottom: 1px solid var(--color-cream-faint);
+        }
+
+        .submit-details li:last-child {
+            border-bottom: none;
+        }
+
+        .submit-details li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        /* ===== How Ideas Are Evaluated ===== */
+        .evaluation {
+            padding: 200px 0;
+            position: relative;
+        }
+
+        .evaluation-header {
+            max-width: 700px;
+            margin-bottom: 64px;
+        }
+
+        .evaluation-header h2 {
+            margin-bottom: 24px;
+        }
+
+        .evaluation-header p {
+            color: var(--color-cream-muted);
+            font-size: clamp(18px, 2vw, 21px);
+        }
+
+        .dimension-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2px;
+            background: var(--color-cream-faint);
+        }
+
+        .dimension {
+            background: var(--color-bg);
+            padding: 40px 28px;
+            text-align: center;
+            transition: all 0.5s var(--ease-out-expo);
+        }
+
+        .dimension:hover {
+            background: var(--color-bg-elevated);
+        }
+
+        .dimension h4 {
+            font-family: var(--font-display);
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--color-accent);
+        }
+
+        .dimension p {
+            color: var(--color-cream-muted);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* ===== What to Expect ===== */
+        .expect {
+            padding: 200px 0;
+            background: var(--color-bg-elevated);
+        }
+
+        .expect-content {
+            max-width: 700px;
+        }
+
+        .expect-content h2 {
+            margin-bottom: 48px;
+        }
+
+        .expect-list {
+            list-style: none;
+        }
+
+        .expect-list li {
             display: flex;
-            align-items: center;
-            gap: 16px;
+            align-items: flex-start;
+            gap: 24px;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--color-cream-faint);
+            font-size: 17px;
+            color: var(--color-cream);
         }
 
-        .author-avatar {
-            width: 52px;
-            height: 52px;
-            background: linear-gradient(135deg, var(--color-burgundy), var(--color-burgundy-light));
+        .expect-list li:last-child {
+            border-bottom: none;
+        }
+
+        .expect-check {
+            width: 32px;
+            height: 32px;
+            background: var(--color-accent-soft);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-family: var(--font-serif);
-            font-size: 20px;
-            font-style: italic;
-        }
-
-        .author-info strong {
-            display: block;
-            font-family: var(--font-serif);
-            font-size: 17px;
-            font-weight: 400;
-            margin-bottom: 2px;
-        }
-
-        .author-info span {
-            color: var(--color-text-muted);
+            flex-shrink: 0;
+            color: var(--color-accent);
             font-size: 14px;
+            font-weight: 700;
         }
 
-        /* ===== FAQ ===== */
-        .faq {
-            background: var(--color-bg-warm);
+        /* ===== Who This Is For ===== */
+        .who-for {
+            padding: 200px 0;
+            position: relative;
         }
 
-        .faq-grid {
+        .who-for h2 {
+            margin-bottom: 64px;
+        }
+
+        .who-for-grid {
             display: grid;
-            grid-template-columns: 1fr 1.6fr;
-            gap: 80px;
-            align-items: start;
+            grid-template-columns: 1fr 1fr;
+            gap: 120px;
         }
 
-        .faq-intro p {
-            color: var(--color-text-soft);
-            font-size: 17px;
-            margin-top: 20px;
+        .who-for-col h3 {
+            font-family: var(--font-display);
+            font-size: clamp(20px, 2.5vw, 26px);
+            font-weight: 700;
+            margin-bottom: 32px;
+            color: var(--color-cream);
         }
 
-        .faq-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
+        .fit-list {
+            list-style: none;
         }
 
-        .faq-item {
-            background: var(--color-surface);
-            border-radius: 16px;
-            padding: 28px 32px;
-            border: 1px solid var(--color-border);
-            transition: all 0.3s ease;
+        .fit-list li {
+            padding: 20px 0;
+            padding-left: 32px;
+            position: relative;
+            font-size: 16px;
+            color: var(--color-cream-muted);
+            line-height: 1.6;
+            border-bottom: 1px solid var(--color-cream-faint);
         }
 
-        .faq-item:hover {
-            border-color: var(--color-burgundy-glow);
+        .fit-list li:last-child {
+            border-bottom: none;
         }
 
-        .faq-question {
-            font-family: var(--font-serif);
-            font-size: 19px;
-            font-weight: 400;
-            margin-bottom: 12px;
-            color: var(--color-text);
+        .fit-list.good li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-success);
+            font-weight: 700;
+            font-size: 18px;
         }
 
-        .faq-answer {
-            color: var(--color-text-soft);
-            font-size: 15px;
-            line-height: 1.7;
+        .fit-list.not li::before {
+            content: '✕';
+            position: absolute;
+            left: 0;
+            color: var(--color-cream-muted);
+            font-weight: 700;
+            font-size: 18px;
         }
 
         /* ===== Final CTA ===== */
         .final-cta {
-            background: linear-gradient(135deg, var(--color-bg-warm) 0%, var(--color-bg) 100%);
+            padding: 200px 0;
+            background: var(--color-bg-elevated);
             text-align: center;
-            padding: 140px 0;
             position: relative;
             overflow: hidden;
         }
@@ -1035,496 +1070,640 @@
             top: -200px;
             left: 50%;
             transform: translateX(-50%);
-            width: 600px;
-            height: 600px;
-            background: var(--color-burgundy-glow);
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.5;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(ellipse at center, var(--color-accent-glow) 0%, transparent 60%);
+            opacity: 0.15;
         }
 
         .final-cta-content {
             position: relative;
             z-index: 1;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
         }
 
         .final-cta .headline-lg {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .final-cta .text-lg {
-            color: var(--color-text-soft);
-            margin-bottom: 40px;
+            color: var(--color-cream-muted);
+            margin-bottom: 48px;
         }
 
-        .final-cta .btn {
-            font-size: 17px;
-            padding: 20px 44px;
-        }
-
-        .final-cta-note {
-            margin-top: 24px;
-            font-size: 14px;
-            color: var(--color-text-muted);
+        .final-cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         /* ===== Footer ===== */
         .footer {
-            background: var(--color-text);
-            color: rgba(255, 255, 255, 0.7);
-            padding: 60px 0 40px;
+            padding: 80px 0 40px;
+            border-top: 1px solid var(--color-cream-faint);
         }
 
         .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 80px;
         }
 
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: white;
-            font-family: var(--font-serif);
-            font-size: 18px;
+        .footer-brand p {
+            color: var(--color-cream-muted);
+            font-size: 15px;
+            max-width: 280px;
+            margin-top: 24px;
         }
 
-        .footer-logo .logo-mark {
-            background: var(--color-burgundy);
+        .footer-links h5 {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-cream-muted);
+            margin-bottom: 24px;
         }
 
-        .footer-links {
-            display: flex;
-            gap: 32px;
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 16px;
+            font-size: 15px;
+            color: var(--color-cream-muted);
         }
 
         .footer-links a {
-            font-size: 14px;
+            font-size: 15px;
+            color: var(--color-cream);
             transition: color 0.3s ease;
         }
 
         .footer-links a:hover {
-            color: white;
+            color: var(--color-accent);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--color-cream-faint);
+            font-size: 13px;
+            color: var(--color-cream-muted);
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 32px;
+        }
+
+        .footer-legal a {
+            color: var(--color-cream-muted);
+        }
+
+        .footer-legal a:hover {
+            color: var(--color-cream);
         }
 
         .footer-parent {
-            margin-top: 40px;
-            padding-top: 24px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 24px;
             text-align: center;
             font-size: 14px;
+            color: var(--color-cream-muted);
         }
 
         .footer-parent a {
-            color: var(--color-sage-light);
+            color: var(--color-accent);
             transition: color 0.3s ease;
         }
 
         .footer-parent a:hover {
-            color: white;
+            color: var(--color-cream);
         }
 
         /* ===== Animations ===== */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .stagger-1 { transition-delay: 0.1s; }
-        .stagger-2 { transition-delay: 0.2s; }
-        .stagger-3 { transition-delay: 0.3s; }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.15; transform: scale(1); }
+            50% { opacity: 0.25; transform: scale(1.1); }
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
 
         /* ===== Responsive ===== */
-        @media (max-width: 1024px) {
-            .hero-grid {
+        @media (max-width: 1200px) {
+            .possibility-content,
+            .believe-content,
+            .different-content,
+            .who-for-grid {
                 grid-template-columns: 1fr;
-                gap: 60px;
+                gap: 48px;
             }
 
-            .hero-visual {
-                order: -1;
+            .possibility-content h2,
+            .believe-content h2,
+            .different-content h2 {
+                position: static;
             }
 
-            .problem-grid {
+            .how-header {
                 grid-template-columns: 1fr;
-                gap: 60px;
+                gap: 24px;
             }
 
             .steps {
-                grid-template-columns: 1fr;
-                gap: 32px;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 48px;
             }
 
-            .build-grid {
+            .steps::before {
+                display: none;
+            }
+
+            .cluster-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .faq-grid {
+            .do-cards {
                 grid-template-columns: 1fr;
-                gap: 40px;
+            }
+
+            .trust-signals {
+                grid-template-columns: 1fr;
+            }
+
+            .dimension-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 768px) {
-            section {
-                padding: 80px 0;
-            }
-
-            .container {
-                padding: 0 20px;
-            }
-
-            .testimonial-grid,
-            .build-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-badge {
+            .nav-links {
                 display: none;
             }
 
+            .hero {
+                padding-bottom: 80px;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+            }
+
+            .hero-scroll {
+                display: none;
+            }
+
+            .possibility, .believe, .who-we-are, .what-we-do,
+            .built-for, .different, .how-it-works, .submit-idea,
+            .evaluation, .expect, .who-for, .final-cta {
+                padding: 120px 0;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .cluster-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dimension-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .role-chips {
+                gap: 6px;
+            }
+
+            .role-chip {
+                font-size: 12px;
+                padding: 4px 12px;
+            }
+
             .footer-content {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .footer-bottom {
                 flex-direction: column;
                 gap: 24px;
                 text-align: center;
             }
 
-            .footer-links {
-                flex-wrap: wrap;
-                justify-content: center;
+            .final-cta-buttons {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-inner">
-                <a href="#" class="logo">
-                    <div class="logo-mark">S</div>
-                    Built By School Leaders
-                </a>
-                <nav class="nav-links">
-                    <a href="#how-it-works" class="nav-link">Process</a>
-                    <a href="#faq" class="nav-link">FAQ</a>
-                    <a href="#book" class="nav-cta">Get Started</a>
-                </nav>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="container nav-content">
+            <a href="#" class="logo">
+                <img src="../Branding/More Logos/Built By Teachers, Built By VoTech/color-light-style-vertical-child-school-leaders.png"
+                     srcset="../Branding/More Logos/Built By Teachers, Built By VoTech/color-light-style-vertical-child-school-leaders.png 1x,
+                             ../Branding/More Logos/Built By Teachers, Built By VoTech/color-light-style-vertical-child-school-leaders@2x.png 2x,
+                             ../Branding/More Logos/Built By Teachers, Built By VoTech/color-light-style-vertical-child-school-leaders@3x.png 3x"
+                     alt="Built By School Leaders">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#submit">Submit an Idea</a></li>
+                <li><a href="#submit" class="btn btn-outline nav-cta">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 1) Hero -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-grid"></div>
+        </div>
+        <div class="container hero-content">
+            <div class="hero-eyebrow">
+                <span>A Built By Studios Vertical</span>
+            </div>
+            <h1 class="headline-xl hero-headline">
+                Built by School Leaders. Shaped by <span class="italic">real school problems.</span> Turned into practical solutions.
+            </h1>
+            <div class="hero-sub">
+                <div class="hero-description">
+                    <p class="text-lg">Built By School Leaders helps creative thinkers turn lived experience into practical digital solutions for themselves and their peers — transforming ideas into reality and passive income.</p>
+                    <div class="role-chips">
+                        <span class="role-chip">Principals</span>
+                        <span class="role-chip">Assistant Principals</span>
+                        <span class="role-chip">MTSS Coordinators</span>
+                        <span class="role-chip">Instructional Coaches</span>
+                        <span class="role-chip">SpEd Leaders</span>
+                        <span class="role-chip">Counselors</span>
+                        <span class="role-chip">Front Office Teams</span>
+                        <span class="role-chip">Operations</span>
+                        <span class="role-chip">Transportation</span>
+                        <span class="role-chip">Food Services</span>
+                    </div>
+                    <div class="hero-ctas">
+                        <a href="#how-it-works" class="btn btn-primary">
+                            See How It Works
+                            <span class="arrow">→</span>
+                        </a>
+                        <a href="#submit" class="btn btn-outline">
+                            Submit your great idea!
+                        </a>
+                    </div>
+                    <p class="hero-trust">Your ideas remain private by default. No technical expertise required. Turn your idea into cash.</p>
+                </div>
             </div>
         </div>
-    </header>
-
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-decor hero-decor--1"></div>
-        <div class="hero-decor hero-decor--2"></div>
-
-        <div class="container">
-            <div class="hero-grid">
-                <div class="hero-content fade-in">
-                    <div class="hero-eyebrow">
-                        <span>◆</span>
-                        A Built By Studios Vertical
-                    </div>
-                    <h1 class="headline-hero hero-title">
-                        You Already Know What Your School <span class="highlight italic">Needs</span>
-                    </h1>
-                    <p class="hero-description">
-                        The tool you've been imagining—the one that would actually solve the problem—describe it to us in 15 minutes. We'll turn it into a professional concept memo. Yours to keep, no strings attached.
-                    </p>
-                    <div class="hero-cta-group">
-                        <a href="#book" class="btn btn-primary">
-                            Get Started
-                        </a>
-                        <a href="#how-it-works" class="btn btn-secondary">
-                            How It Works
-                        </a>
-                    </div>
-                    <div class="hero-trust">
-                        <div class="hero-trust-icon">✓</div>
-                        <span>15 minutes · Professional memo delivered instantly · Zero obligation</span>
-                    </div>
-                </div>
-
-                <div class="hero-visual fade-in stagger-1">
-                    <div class="hero-card">
-                        <div class="hero-badge hero-badge--1">
-                            <span>📄</span> Yours to keep
-                        </div>
-                        <div class="hero-badge hero-badge--2">
-                            <span>⏱</span> 15 min chat
-                        </div>
-                        <div class="hero-card-label">Concept Memo Preview</div>
-                        <div class="hero-card-title">Parent Engagement Platform</div>
-                        <div class="hero-card-content">
-                            <p><strong>Overview:</strong> A mobile-first application enabling real-time communication between educators and families...</p>
-                            <p><strong>Core Features:</strong> Progress dashboards, two-way messaging, event integration, multilingual support...</p>
-                        </div>
-                        <div class="hero-card-footer">
-                            This is what you'll walk away with—whether you build with us or not.
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
         </div>
     </section>
 
-    <!-- Problem Section -->
-    <section class="problem">
+    <!-- 2) Possibility -->
+    <section class="possibility">
         <div class="container">
-            <div class="problem-grid">
-                <div class="problem-content fade-in">
-                    <div class="section-eyebrow">
-                        <span>The Challenge</span>
-                    </div>
-                    <h2 class="headline-lg">Great Ideas,<br><span class="italic">Nowhere to Go</span></h2>
-                    <ul class="problem-list">
-                        <li class="problem-item">
-                            <div class="problem-number">1</div>
-                            <div class="problem-text">
-                                <h4>Vision Without Resources</h4>
-                                <p>You know exactly what would help—a better parent portal, a smarter scheduling system. But building it? That requires expertise you don't have time to find.</p>
-                            </div>
-                        </li>
-                        <li class="problem-item">
-                            <div class="problem-number">2</div>
-                            <div class="problem-text">
-                                <h4>Generic Tools Don't Fit</h4>
-                                <p>Off-the-shelf software forces your school into someone else's workflow. You need tools shaped around how your community actually operates.</p>
-                            </div>
-                        </li>
-                        <li class="problem-item">
-                            <div class="problem-number">3</div>
-                            <div class="problem-text">
-                                <h4>No Time to Explore</h4>
-                                <p>Between running a building and supporting a team, who has time to write RFPs, research vendors, or learn what's even possible?</p>
-                            </div>
-                        </li>
+            <div class="possibility-content">
+                <h2 class="headline-lg">If you've ever thought <span class="italic">"there is a better way, and I think I know how"</span> — you're probably right. Turn that idea into passive income.</h2>
+                <div class="possibility-body">
+                    <p>School leaders see the breakdowns first: where systems have too much friction, where information gets lost, where meetings are inefficient, and where good intentions turn into paperwork. The best solutions are often already in your head — because you live the work. Turn those solutions into practical tools and your side-hustle.</p>
+                    <ul class="possibility-bullets">
+                        <li>You know what slows the school down.</li>
+                        <li>You know what creates confusion and miscommunication.</li>
+                        <li>You know how to drive better student outcomes.</li>
+                        <li>You know what tools schools wish existed — because you've built workarounds to survive without them.</li>
                     </ul>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="problem-visual fade-in stagger-1">
-                    <div class="memo-stack">
-                        <div class="memo-card memo-card--back memo-card--back-2"></div>
-                        <div class="memo-card memo-card--back"></div>
-                        <div class="memo-card">
-                            <div class="memo-header">
-                                <div class="memo-icon">📋</div>
-                                <div class="memo-meta">
-                                    <div class="memo-label">Concept Memo</div>
-                                    <div class="memo-title">Your Idea, Documented</div>
-                                </div>
-                            </div>
-                            <div class="memo-body">
-                                <p><strong>What you'll receive:</strong></p>
-                                <ul class="memo-features">
-                                    <li>Executive summary</li>
-                                    <li>Core feature breakdown</li>
-                                    <li>Technical approach</li>
-                                    <li>Timeline & budget range</li>
-                                </ul>
-                            </div>
-                            <div class="memo-footer">
-                                Use it to get buy-in, shop vendors, or bring it back to us.
-                            </div>
+    <!-- 3) What We Believe -->
+    <section class="believe">
+        <div class="container">
+            <div class="believe-content">
+                <h2 class="headline-lg">What we <span class="italic">believe</span></h2>
+                <p class="believe-text">School leaders who are involved in daily operations have the best understanding of what needs improvement and how to fix it. Built By School Leaders uses advanced technology to transform these insights into practical solutions, offering leaders structured guidance and opportunities to collaborate on sharpening and implementing their ideas. We believe software should simplify tasks, improve efficiency, and support human efforts — making processes easier rather than unnecessarily complicated.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4) Who We Are -->
+    <section class="who-we-are">
+        <div class="container">
+            <div class="who-we-are-content">
+                <h2 class="headline-lg">Who we are</h2>
+                <p class="who-we-are-body">Built By School Leaders is a practitioner-led software engineering studio. If a problem is real, recurring, and widely felt across schools, it's worth solving — and worth investing in. We're a builder partner that helps school leaders transform real problems into focused tools that work under real-world conditions.</p>
+                <div class="trust-signals">
+                    <div class="trust-signal">
+                        <div class="trust-signal-icon">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
                         </div>
+                        <p>Built by and for practitioners</p>
+                    </div>
+                    <div class="trust-signal">
+                        <div class="trust-signal-icon">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                        </div>
+                        <p>Designed specifically for the realities and complexities of schools</p>
+                    </div>
+                    <div class="trust-signal">
+                        <div class="trust-signal-icon">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <p>Built to reduce burdens, improve communications, and improve outcomes</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- How It Works -->
+    <!-- 5) What We Do -->
+    <section class="what-we-do">
+        <div class="container">
+            <div class="what-we-do-header">
+                <h2 class="headline-lg">What we do</h2>
+                <p>We partner with school leaders to help them refine ideas, vet them against real constraints, build focused tools, and support their adoption — so schools spend less time fighting systems and more time making life easier and improving outcomes.</p>
+            </div>
+            <div class="do-cards">
+                <div class="do-card">
+                    <span class="do-card-number">01</span>
+                    <h3>Explore and Refine Ideas</h3>
+                    <p>You bring the idea. We help you think it through, sharpen the solution, and turn your solution into a clear, well-documented professional concept. After a guided conversation with one of our AI-mentors, you'll walk away with a private Concept Memo — yours alone. Keep it, share it internally, or submit it to us when you're ready. Ideas are carefully vetted to ensure they are distinct, viable in the market, and genuinely solve problems schools face — before we start building.</p>
+                </div>
+                <div class="do-card">
+                    <span class="do-card-number">02</span>
+                    <h3>Build Practical, Focused Solutions</h3>
+                    <p>Our engineering team understands how to build solutions for schools. They are experienced in privacy, rostering, accessibility, adaptivity, reporting, gamification, and other critical elements. They know how to create durable tools that solve specific problems — without bloated platforms or feature overload. One-size-fits-all platforms rarely fit anyone well.</p>
+                </div>
+                <div class="do-card">
+                    <span class="do-card-number">03</span>
+                    <h3>Bring Solutions to Market</h3>
+                    <p>We know how to market your solution to school leaders, support discovery, positioning and rollout so tools are actually adopted in real schools and districts.</p>
+                </div>
+                <div class="do-card">
+                    <span class="do-card-number">04</span>
+                    <h3>Shared Infrastructure</h3>
+                    <p>Product design and engineering; AI architecture and safety layers appropriate for school environments; legal, IP, billing, and distribution — all handled by us.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6) Built for the work of school leadership -->
+    <section class="built-for">
+        <div class="container">
+            <div class="built-for-header">
+                <h2 class="headline-lg">Built for the work that <span class="italic">keep schools performing</span></h2>
+                <p>Built By School Leaders includes instructional leadership and MTSS — but also the operational systems that determine whether plans become reality.</p>
+            </div>
+            <div class="cluster-grid">
+                <div class="cluster-card">
+                    <h3>MTSS + Intervention Coherence</h3>
+                    <p>Scheduling interventions, meeting follow-through, referrals, documentation, progress monitoring, cross-domain visibility (academics, behavior, attendance, SEL)</p>
+                </div>
+                <div class="cluster-card">
+                    <h3>Instructional Execution</h3>
+                    <p>Walkthrough workflows, coaching cycles, action steps, materials readiness, fidelity checks that don't become busywork</p>
+                </div>
+                <div class="cluster-card">
+                    <h3>Student Services + Family Communication</h3>
+                    <p>Attendance outreach, behavior response coordination, case management, multilingual communication workflows</p>
+                </div>
+                <div class="cluster-card">
+                    <h3>Operations + Compliance</h3>
+                    <p>Forms, approvals, audits, staffing coordination, substitutes, incident documentation</p>
+                </div>
+                <div class="cluster-card">
+                    <h3>Front Office + Daily Logistics</h3>
+                    <p>Visitors, meds, dismissal changes, parent requests, field trip processes, end-of-day chaos</p>
+                </div>
+                <div class="cluster-card">
+                    <h3>Transportation + Food Services</h3>
+                    <p>Real-time changes, counts, routing communication, exception handling, daily coordination</p>
+                </div>
+            </div>
+            <p class="cluster-bridge">If the problem is real, recurring, and shared across schools, it's worth capturing — and worth building.</p>
+        </div>
+    </section>
+
+    <!-- 7) Why This Is Different -->
+    <section class="different">
+        <div class="container">
+            <div class="different-content">
+                <h2 class="headline-lg">Why this is <span class="italic">different</span></h2>
+                <div>
+                    <ul class="different-list">
+                        <li><strong>Not a traditional edtech platform</strong> (no generic tools built far from schools)</li>
+                        <li><strong>Not a curriculum program</strong> (no one-size binders and compliance theater)</li>
+                        <li><strong>Not "AI for its own sake"</strong> (reliability, transparency, and responsibility where it matters)</li>
+                    </ul>
+                    <p class="different-closer">This is practitioner-led software creation supported by experienced educators, mentors, and builders who understand how schools actually function.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8) How It Works -->
     <section class="how-it-works" id="how-it-works">
         <div class="container">
-            <div class="section-header fade-in">
-                <div class="section-eyebrow">
-                    <span>How It Works</span>
-                </div>
-                <h2 class="headline-lg section-title">Three Simple Steps</h2>
-                <p class="section-description">
-                    From conversation to concept memo—delivered instantly. No technical knowledge required.
-                </p>
+            <div class="how-header">
+                <h2 class="headline-lg">How it works</h2>
+                <p class="text-lg">Problem first. Thoughtful vetting. Light builds. Real school signals. Scale the ones that work.</p>
             </div>
-
             <div class="steps">
-                <div class="step fade-in stagger-1">
-                    <div class="step-number">1</div>
-                    <div class="step-icon">💬</div>
-                    <h3>Share Your Vision</h3>
-                    <p>Tell us about the problem you're trying to solve. No tech jargon needed—just describe what you wish existed for your school.</p>
-                    <div class="step-detail">~15 minute conversation</div>
+                <div class="step">
+                    <div class="step-icon step-icon--highlight">
+                        <span>01</span>
+                    </div>
+                    <h3>Problem First</h3>
+                    <p>Our automated Product Idea Ingestion Engine (PIIE) enables users to systematically organize their ideas. The process is confidential; your idea will not be submitted until you choose to do so. Upon completion, you will receive a comprehensive concept memo that documents the specific school challenge you face each week and outlines a proposed solution. You may save, print, or share this memo with yourself, and submit it to us for review at your convenience. The PIIE assists in mapping out workflow processes, identifying breakdowns, and highlighting relevant constraints such as time, staffing, compliance, and privacy. Additionally, common failure modes are clearly defined to ensure solutions are grounded in practical realities rather than idealized scenarios.</p>
                 </div>
-
-                <div class="step fade-in stagger-2">
-                    <div class="step-number">2</div>
-                    <div class="step-icon">📋</div>
-                    <h3>Get Your Memo</h3>
-                    <p>Receive a professional concept document instantly—summarizing your idea, key features, and what it would take to build. Yours to keep, no strings attached.</p>
-                    <div class="step-detail">Delivered instantly in chat</div>
+                <div class="step">
+                    <div class="step-icon">
+                        <span>02</span>
+                    </div>
+                    <h3>Idea Coaching</h3>
+                    <p>We pressure-test the idea with industry experts, investigate what already exists, why it falls short, and what a realistic "version 1" could be. We also decide what should remain human-led and where technology truly helps. The aim is to create a practical plan that results in a solution schools are likely to implement.</p>
                 </div>
-
-                <div class="step fade-in stagger-3">
-                    <div class="step-number">3</div>
-                    <div class="step-icon">🏗️</div>
-                    <h3>Best Ideas Get Built</h3>
-                    <p>Selected ideas become real tools for schools everywhere. You get early access and a share of the outcome.</p>
-                    <div class="step-detail">We handle the building</div>
+                <div class="step">
+                    <div class="step-icon">
+                        <span>03</span>
+                    </div>
+                    <h3>Light Build</h3>
+                    <p>We build a small, focused MVP designed around real school routines and usability. You give quick feedback as we build so we don't drift into "features that look good in demos." The result is a usable first version—not a bloated platform.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <span>04</span>
+                    </div>
+                    <h3>Real-World Signals</h3>
+                    <p>We test the tool in real meetings and routines to see if it reduces burden and improves follow-through. We look for adoption signals (do people keep using it) and practical value (does it save time or improve execution). We also check willingness to pay so the solution can sustain.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <span>05</span>
+                    </div>
+                    <h3>Scale or Stop</h3>
+                    <p>If it earns real momentum, we improve it, harden it, and expand it to more schools and districts. If it doesn't, we stop quickly and learn why and consider how to overcome those challenges. Tools that prove practical value get more funding and engineering.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- What We Build -->
-    <section class="what-we-build">
+    <!-- 9) How to Submit an Idea -->
+    <section class="submit-idea" id="submit">
         <div class="container">
-            <div class="section-header fade-in">
-                <div class="section-eyebrow">
-                    <span>What We Build</span>
-                </div>
-                <h2 class="headline-lg section-title" style="color: white;">Tools That Actually Fit</h2>
-                <p class="section-description">
-                    From administrative efficiency to family engagement—we build what your school actually needs.
-                </p>
-            </div>
-
-            <div class="build-grid">
-                <div class="build-card fade-in stagger-1">
-                    <div class="build-icon">👨‍👩‍👧</div>
-                    <h3>Parent Portals</h3>
-                    <p>Real-time progress tracking, two-way messaging, and event management that keeps families connected.</p>
-                </div>
-                <div class="build-card fade-in stagger-2">
-                    <div class="build-icon">📊</div>
-                    <h3>Admin Dashboards</h3>
-                    <p>Attendance, behavior, and performance data unified in one place—with insights that actually matter.</p>
-                </div>
-                <div class="build-card fade-in stagger-3">
-                    <div class="build-icon">📅</div>
-                    <h3>Scheduling Systems</h3>
-                    <p>Master schedules, substitute management, and room booking that actually work together.</p>
-                </div>
-                <div class="build-card fade-in stagger-1">
-                    <div class="build-icon">📝</div>
-                    <h3>Assessment Tools</h3>
-                    <p>Track student progress with assessments designed around your curriculum and standards.</p>
-                </div>
-                <div class="build-card fade-in stagger-2">
-                    <div class="build-icon">🚌</div>
-                    <h3>Operations Apps</h3>
-                    <p>Facilities requests, transportation tracking, inventory management—streamlined.</p>
-                </div>
-                <div class="build-card fade-in stagger-3">
-                    <div class="build-icon">💬</div>
-                    <h3>Communication Hubs</h3>
-                    <p>Internal messaging, announcements, and workflows that reduce email overload.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Social Proof -->
-    <section class="social-proof">
-        <div class="container">
-            <div class="section-header fade-in">
-                <div class="section-eyebrow">
-                    <span>From the Field</span>
-                </div>
-                <h2 class="headline-lg section-title">Educators Like You</h2>
-            </div>
-
-            <div class="testimonial-grid">
-                <div class="testimonial fade-in stagger-1">
-                    <div class="testimonial-content">
-                        <p class="testimonial-quote">
-                            I've had this idea in my head for three years. In 15 minutes, they understood it better than I did. The memo helped me get board approval.
-                        </p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">S</div>
-                            <div class="author-info">
-                                <strong>Dr. Sarah Mitchell</strong>
-                                <span>Principal, Jefferson Elementary</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial fade-in stagger-2">
-                    <div class="testimonial-content">
-                        <p class="testimonial-quote">
-                            We were drowning in spreadsheets for attendance tracking. Now we have a system that took weeks, not months, to build.
-                        </p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">J</div>
-                            <div class="author-info">
-                                <strong>James Rodriguez</strong>
-                                <span>Assistant Principal, Lincoln High</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="faq" id="faq">
-        <div class="container">
-            <div class="faq-grid">
-                <div class="faq-intro fade-in">
-                    <div class="section-eyebrow" style="justify-content: flex-start;">
-                        <span>FAQ</span>
-                    </div>
-                    <h2 class="headline-lg">Common Questions</h2>
-                    <p>We know this might be new territory. Here's what educators usually want to know.</p>
-                </div>
-
-                <div class="faq-list">
-                    <div class="faq-item fade-in stagger-1">
-                        <h4 class="faq-question">What if I'm not "technical"?</h4>
-                        <p class="faq-answer">That's exactly the point. You bring the vision for your school; we translate it into something buildable. No jargon required—just describe what you need in plain language.</p>
-                    </div>
-                    <div class="faq-item fade-in stagger-2">
-                        <h4 class="faq-question">Is the concept memo really free?</h4>
-                        <p class="faq-answer">Yes. It's our way of showing what we can do. You'll walk away with a professional document whether you decide to work with us or not.</p>
-                    </div>
-                    <div class="faq-item fade-in stagger-3">
-                        <h4 class="faq-question">How is this different from hiring a developer?</h4>
-                        <p class="faq-answer">We're a studio that specializes in education. We've seen what works (and what doesn't) across dozens of schools. That experience shapes everything we build.</p>
-                    </div>
-                    <div class="faq-item fade-in">
-                        <h4 class="faq-question">What about student data privacy?</h4>
-                        <p class="faq-answer">Everything we build is FERPA-compliant by design. Security isn't an afterthought—it's baked into our process from day one.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="final-cta" id="book">
-        <div class="container">
-            <div class="final-cta-content fade-in">
-                <h2 class="headline-lg">Ready to Make <span class="italic">Your Idea</span> Real?</h2>
-                <p class="text-lg">
-                    15 minutes now. A professional concept memo delivered instantly.<br>
-                    Yours to keep—no strings attached.
-                </p>
+            <div class="submit-idea-content">
+                <h2 class="headline-lg">Submit an idea <span class="text-muted" style="font-size: 0.6em; font-weight: 400;">(no forms, no jargon)</span></h2>
+                <ul class="submit-details">
+                    <li>A guided, branching conversation — not a long intake form</li>
+                    <li>Takes about 15-30 minutes</li>
+                    <li>You don't need a business plan or technical language</li>
+                    <li>Private by default (nothing shared with us, but you can save it, print it, share it with others)</li>
+                </ul>
                 <a href="#" class="btn btn-primary">
-                    Get Started
+                    Start the Idea Conversation
+                    <span class="arrow">→</span>
                 </a>
-                <p class="final-cta-note">
-                    No preparation needed. Just bring your idea.
+            </div>
+        </div>
+    </section>
+
+    <!-- 10) How Ideas Are Evaluated -->
+    <section class="evaluation">
+        <div class="container">
+            <div class="evaluation-header">
+                <h2 class="headline-lg">How we evaluate ideas</h2>
+                <p>This isn't a competition. Good ideas aren't "rejected" — they're clarified and refined. We look for ideas that can genuinely reduce burden and improve execution in real schools.</p>
+            </div>
+            <div class="dimension-grid">
+                <div class="dimension">
+                    <h4>Problem Clarity + Frequency</h4>
+                    <p>Is this pain recurring and widely felt?</p>
+                </div>
+                <div class="dimension">
+                    <h4>Impact</h4>
+                    <p>Does it improve follow-through, efficiency, equity, or student support?</p>
+                </div>
+                <div class="dimension">
+                    <h4>Feasibility</h4>
+                    <p>Can it work inside school constraints (time, staffing, policy, privacy)?</p>
+                </div>
+                <div class="dimension">
+                    <h4>Adoption Likelihood</h4>
+                    <p>Would leaders actually use it weekly in real routines?</p>
+                </div>
+                <div class="dimension">
+                    <h4>Focus</h4>
+                    <p>Can it ship as a practical tool (not a massive platform)?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11) What to Expect -->
+    <section class="expect">
+        <div class="container">
+            <div class="expect-content">
+                <h2 class="headline-lg">What to expect</h2>
+                <ul class="expect-list">
+                    <li>
+                        <span class="expect-check">✓</span>
+                        Clear communication and defined next steps
+                    </li>
+                    <li>
+                        <span class="expect-check">✓</span>
+                        Practical timelines (built around school calendars)
+                    </li>
+                    <li>
+                        <span class="expect-check">✓</span>
+                        A realistic definition of "version 1"
+                    </li>
+                    <li>
+                        <span class="expect-check">✓</span>
+                        If an idea doesn't move forward, you still walk away with sharper clarity and a professional concept summary
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12) Who This Is (and Isn't) For -->
+    <section class="who-for">
+        <div class="container">
+            <h2 class="headline-lg">Who this is <span class="italic">(and isn't)</span> for</h2>
+            <div class="who-for-grid">
+                <div class="who-for-col">
+                    <h3>Good fit</h3>
+                    <ul class="fit-list good">
+                        <li>Leaders who see recurring breakdowns and patterns across schools and have ideas on how to solve them</li>
+                        <li>People who care about feasibility and follow-through</li>
+                        <li>Anyone trying to reduce burden while improving student support systems and make a little money on the side</li>
+                    </ul>
+                </div>
+                <div class="who-for-col">
+                    <h3>Not a fit</h3>
+                    <ul class="fit-list not">
+                        <li>Sales pitches</li>
+                        <li>One-off hacks with no repeatable workflow</li>
+                        <li>Fully formed startups seeking funding (this is not pitch theater)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 13) Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="final-cta-content">
+                <h2 class="headline-lg">If you've ever said, <span class="italic">"We're doing this the hard way,"</span> this is for you.</h2>
+                <p class="text-lg">
+                    Submit a real problem. We'll help you turn it into something practical.
                 </p>
+                <div class="final-cta-buttons">
+                    <a href="#submit" class="btn btn-primary">
+                        Submit an Idea
+                        <span class="arrow">→</span>
+                    </a>
+                    <a href="#how-it-works" class="btn btn-outline">
+                        See How It Works
+                        <span class="arrow">→</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -1533,50 +1712,87 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <div class="logo-mark">S</div>
-                    Built By School Leaders
+                <div class="footer-brand">
+                    <a href="#" class="logo logo-footer">
+                        <img src="../Branding/More Logos/Built By Teachers, Built By VoTech/color-light-style-vertical-child-school-leaders.png"
+                             srcset="../Branding/More Logos/Built By Teachers, Built By VoTech/color-light-style-vertical-child-school-leaders.png 1x,
+                                     ../Branding/More Logos/Built By Teachers, Built By VoTech/color-light-style-vertical-child-school-leaders@2x.png 2x,
+                                     ../Branding/More Logos/Built By Teachers, Built By VoTech/color-light-style-vertical-child-school-leaders@3x.png 3x"
+                             alt="Built By School Leaders">
+                    </a>
+                    <p>Practitioner-led software creation for school leaders who see what's broken and know how to fix it.</p>
                 </div>
                 <div class="footer-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Contact</a>
+                    <h5>Navigate</h5>
+                    <ul>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#submit">Submit an Idea</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="../Built_By_Core/index.html">Built By Studios</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h5>Contact</h5>
+                    <ul>
+                        <li>Thomas DeSimone</li>
+                        <li><a href="tel:000-000-0000">000-000-0000</a></li>
+                        <li><a href="mailto:contact@builtbystudios.com">contact@builtbystudios.com</a></li>
+                        <li>100 Chicago Street, Chicago, IL</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Built By School Leaders. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
                 </div>
             </div>
             <div class="footer-parent">
-                A vertical of <a href="built_by_studios_core_v2.html">Built By Studios</a> — The venture studio for people with ideas
+                A vertical of <a href="../Built_By_Core/index.html">Built By Studios</a> — Practitioner-led software creation
             </div>
         </div>
     </footer>
 
     <script>
-        // Intersection Observer for fade-in animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, {
+        // Navigation scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 100);
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
+            rootMargin: '0px 0px -100px 0px'
+        };
 
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        const fadeElements = document.querySelectorAll('.do-card, .step, .cluster-card, .dimension, .trust-signal, .different-list li, .expect-list li, .fit-list li, .submit-details li');
 
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(30px)';
+                    entry.target.style.transition = `all 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.08}s`;
+
+                    requestAnimationFrame(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
                     });
+
+                    observer.unobserve(entry.target);
                 }
             });
-        });
+        }, observerOptions);
+
+        fadeElements.forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
